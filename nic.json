@@ -1,0 +1,26 @@
+{
+    "type": "Microsoft.Network/networkInterfaces",
+    "name": "samplenic",
+    "location": "West US",
+    "apiVersion": "2017-06-01",
+    "dependsOn": [
+        "Microsoft.Network/publicIPAddresses/samplePIP",
+        "Microsoft.Network/virtualNetworks/samplevnet"
+    ],
+    "properties": {
+        "ipConfigurations": [
+            {
+                "name": "ipconfig1",
+                "properties": {
+                    "privateIPAllocationMethod": "Dynamic",
+                    "publicIPAddress": {
+                        "id": "[resourceId('Microsoft.Network/publicIPAddresses' , 'samplePIP')]"
+                    },
+                    "subnet": {
+                        "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', 'samplevnet'),'/subnets/samplesubnet')]"
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -16,9 +16,7 @@
             "sku": {
                 "name": "[parameters('networkspec').sku]"
             },
-            "kind": {
-                "name": "[parameters('networkspec').kind]"
-            },
+            "kind": "[parameters('networkspec').kind]",
             "properties": {}
         }
     ]

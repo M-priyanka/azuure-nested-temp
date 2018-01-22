@@ -20,7 +20,7 @@
                 },
                 "subnets": [
                     {
-                        "name": "[parameter('networkSpec').SubnetName]",
+                        "name": "[parameters('networkSpec').SubnetName]",
                         "properties": {
                             "addressPrefix": "10.0.1.0/24"
                         }

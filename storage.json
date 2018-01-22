@@ -14,9 +14,9 @@
             "location": "[resourceGroup().location]",
             "apiVersion": "2017-06-01",
             "sku": {
-                "name": "Standard_LRS"
+                "name": "[parameters('networkSpec').sku]"
             },
-            "kind": "Storage",
+            "kind": "[parameters('networkSpec').kind]",
             "properties": {}
         }
     ]

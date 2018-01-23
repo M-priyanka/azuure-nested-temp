@@ -28,7 +28,7 @@
                                 "id": "[concat(resourceId('Microsoft.Network/publicIPAddresses',variables('sampleIP')))]"
                             },
                             "subnet": {
-                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', variables('virtualnetworkName'),'/',variables('SubnetName')))]"
+                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks','/',variables('SubnetName')))]"
                             }
                         }
                     }

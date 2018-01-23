@@ -25,7 +25,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('sampleIP'))]"
+                                "id": "[concat(resourceId('Microsoft.Network/publicIPAddresses',variables('sampleIP')))]"
                             },
                             "subnet": {
                                 "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', variables('virtualnetworkName'),'/',variables('SubnetName')))]"

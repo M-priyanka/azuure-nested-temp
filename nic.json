@@ -15,7 +15,7 @@
     "resources": [
         {
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[parameters('networkSpec').nicName]",
+            "name": "[parameters('networkSpec').Samplenic]",
             "location": "West US",
             "apiVersion": "2017-06-01",
             "properties": {

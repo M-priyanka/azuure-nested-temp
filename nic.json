@@ -3,10 +3,6 @@
     "name": "samplenic",
     "location": "West US",
     "apiVersion": "2017-06-01",
-    "dependsOn": [
-        "Microsoft.Network/publicIPAddresses/samplePIP",
-        "Microsoft.Network/virtualNetworks/samplevnet"
-    ],
     "properties": {
         "ipConfigurations": [
             {

@@ -7,7 +7,8 @@
         }
     },
     "variables": {
-        "Samplenic":"[parameters('networkSpec').Samplenic]"
+        "Samplenic":"[parameters('networkSpec').Samplenic]",
+        "storageAccountname":"[parameters('networkSpec').storageAccountname]"
     },
     "resources": [
         {
@@ -34,7 +35,7 @@
                     "osDisk": {
                         "createOption": "FromImage",
                         "managedDisk": {
-                            "storageAccountType": "[parameters('networkSpec').storageAccountname]"
+                            "storageAccountType":"[variables('storageAccountname')]"
                         }
                     }
                 },

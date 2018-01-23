@@ -15,7 +15,7 @@
     "resources": [
         {
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "samplenic",
+            "name": "[parameters('networkSpec').nicName]",
             "location": "West US",
             "apiVersion": "2017-06-01",
             "properties": {
@@ -28,7 +28,7 @@
                                 "id": "[concat(resourceId('Microsoft.Network/publicIPAddresses',variables('sampleIP')))]"
                             },
                             "subnet": {
-                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', variables('virtualnetworkName'),'/subnets/',variables('SubnetName')))]"
+                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', variables('virtualnetworkName')),'/subnets/',variables('SubnetName'))]"
                             }
                         }
                     }

@@ -1,0 +1,144 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {
+        "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
+        "vnet": "vnet1",
+        "subnet":"sub1",
+        "baseuri": "https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master",
+        "vneturi":"[concat(variables('baseuri'),'/vnet.json')]",
+        "storageuri":"[concat(variables('baseuri'),'/storage.json')]",
+        "nsguri":"[concat(variables('baseuri'),'/nsg.json')]",
+        "pipuri":"[concat(variables('baseuri'),'/pip.json')]",
+        "nicuri":"[concat(variables('baseuri'),'/nic.json')]",
+"storagename":"[concat('sample',variables('suffix'))]",
+       "vmuri":"[concat(variables('baseuri'),'/vm.json')]",
+        "networkSpec": {
+            "virtualnetworkName": "[variables('vnet')]",
+            "SubnetName":"[variables('subnet')]",
+            "storageAccountname":"[variables('storagename')]",
+            "sku":"Standard_LRS",
+            "kind":"Storage",
+            "nsg":"nsgName",
+            "sampleIP":"pipName",
+            "Samplenic":"nicName",
+            "Samplevm":"samplelinvm"
+
+        }
+    },
+    "resources": [
+        {
+            "name": "vnet",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-02-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('vneturi')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "networkSpec": {
+                        "value": "[variables('networkSpec')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "storageAccount",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-02-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('storageuri')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "networkSpec": {
+                        "value": "[variables('networkSpec')]"
+                    }
+                }
+            }
+        },
+
+        {
+            "name": "networkSecurityGroup",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-02-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('nsguri')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "networkSpec": {
+                        "value": "[variables('networkSpec')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "publicIP",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-02-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('pipuri')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "networkSpec": {
+                        "value": "[variables('networkSpec')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Nic",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/publicIP",
+                "Microsoft.Resources/deployments/vnet"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('nicuri')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "networkSpec": {
+                        "value": "[variables('networkSpec')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "vm",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/storageAccount",
+                "Microsoft.Resources/deployments/Nic"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('vmuri')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "networkSpec": {
+                        "value": "[variables('networkSpec')]"
+                    }
+                }
+            }
+        }
+
+    ]
+}

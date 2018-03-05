@@ -1,0 +1,57 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "azureSQL": {
+            "type": "object"
+        },
+        "apiVersions": {
+            "type": "object"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "[parameters('apiVersions').sqlServerApiVersion]",
+            "type": "Microsoft.Sql/servers",
+            "location": "[parameters('azureSQL').location]",
+            "name": "[parameters('azureSQL').serverName]",
+            "properties": {
+                "administratorLogin": "[parameters('azureSQL').sqlAuthenticationLogin]",
+                "administratorLoginPassword": "[parameters('azureSQL').sqlAuthenticationPassword]",
+                "version": "12.0"
+            },
+            "resources": [
+                {
+                    "apiVersion": "[parameters('apiVersions').sqlDBApiVersion]",
+                    "type": "databases",
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/', parameters('azureSQL').serverName)]"
+                    ],
+                    "location":"[parameters('azureSQL').location]",
+                    "name": "[parameters('azureSQL').databaseName1]",
+                    "properties": {
+                        "collation": "[parameters('azureSQL').collation]",
+                        "edition": "[parameters('azureSQL').edition]",
+                        "maxSizeBytes": "[parameters('azureSQL').maxSizeBytes]",
+                        "requestedServiceObjectiveName": "[parameters('azureSQL').requestedServiceObjectiveName]"
+                    }
+                },
+                   
+                {
+                    "type": "Microsoft.Sql/servers/firewallRules",
+                    "location": "[parameters('azureSQL').location]",
+                    "name": "[concat(parameters('azureSQL').serverName,'/','allowall')]",
+                    "apiVersion": "[parameters('apiVersions').sqlDBApiVersion]",
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/', parameters('azureSQL').serverName)]"
+                    ],
+                    "properties": {
+                        "endIpAddress": "0.0.0.0",
+                        "startIpAddress": "0.0.0.0"
+                    }
+                }
+            ]
+        }
+    ]
+}

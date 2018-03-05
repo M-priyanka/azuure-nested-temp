@@ -42,7 +42,7 @@
                     "type": "Microsoft.Sql/servers/firewallRules",
                     "location": "[parameters('azureSQL').location]",
                     "name": "[concat(parameters('azureSQL').serverName,'/','allowall')]",
-                    "apiVersion": "[parameters('apiVersions').sqlDBApiVersion]",
+                    "apiVersion": "[parameters('apiVersions').sqlServerApiVersion]",
                     "dependsOn": [
                         "[concat('Microsoft.Sql/servers/', parameters('azureSQL').serverName)]"
                     ],

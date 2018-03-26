@@ -16,6 +16,8 @@ echo "===========================================Installing Azure CLI 2.0=======
 sudo apt-get install azure-cli
 sudo apt-get update
 sleep 10
+sudo cd /
+sudo cd /tmp
 sudo mkdir iot-demo-labs 
 sudo wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/getdata.py >> /tmp/iot-demo-labs 
 sudo wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/input.bash >> /tmp/iot-demo-labs 

@@ -1,6 +1,8 @@
 #! /bin/bash
 sudo apt install -y python-pip
 sudo pip install azure
+sudo apt-get install jq -y
+sudo apt-get update
 
 sudo apt-get update 
 sudo apt-get install -y libssl-dev libffi-dev python-dev build-essential 
@@ -16,8 +18,7 @@ sudo apt-get update
 sleep 10
 
 wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/getdata.py
-wget 
+wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/input.bash 
 sh input.bash
-sudo apt-get install jq -y
-sudo apt-get update
+
 

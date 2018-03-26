@@ -1,6 +1,7 @@
 #! /bin/bash
 sudo apt install -y python-pip
 sudo pip install azure
+
 sudo apt-get update 
 sudo apt-get install -y libssl-dev libffi-dev python-dev build-essential 
 sudo apt-get install -y nodejs-legacy 
@@ -14,17 +15,9 @@ sudo apt-get install azure-cli
 sudo apt-get update
 sleep 10
 
-
-wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/getdata.py >> getdata.py
-
-count=1001
-while [ $count -le 1003 ]
-do
-   jsonfile=`python getdata.py $count`
-   echo $jsonfile >> inputparam-$count.json
-   count=`expr $count + 1`
-done
-
+wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/getdata.py
+wget 
+sh input.bash
 sudo apt-get install jq -y
 sudo apt-get update
 

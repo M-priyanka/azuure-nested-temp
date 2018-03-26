@@ -1,6 +1,5 @@
 #! /bin/bash
-
-sudo apt-get install python
+sudo apt install -y python-pip
 sudo pip install azure
 sudo apt-get update 
 sudo apt-get install -y libssl-dev libffi-dev python-dev build-essential 
@@ -24,4 +23,6 @@ do
    count=`expr $count + 1`
 done
 
+sudo apt-get install jq -y
+sudo apt-get update
 

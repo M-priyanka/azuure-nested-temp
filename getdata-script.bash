@@ -17,8 +17,8 @@ sudo apt-get install azure-cli
 sudo apt-get update
 sleep 10
 
-wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/getdata.py
-wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/input.bash 
-sh input.bash
+sudo wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/getdata.py 
+sudo wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/input.bash  
+sudo sh input.bash 
 
 

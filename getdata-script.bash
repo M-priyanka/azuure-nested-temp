@@ -22,8 +22,9 @@ sudo mkdir iot-demo-labs
 cd /tmp/iot-demo-labs
 sudo wget https://raw.githubusercontent.com/sysgain/IOTLabs/EMSDemoLabs-Dev/scripts/getdata.py?token=AT7l1cLRwtCUocH6DqiZ85WpEW6Moa8Qks5awnQmwA%3D%3D >>/tmp/iot-demo-labs
 mv getdata.py?token=AT7l1cLRwtCUocH6DqiZ85WpEW6Moa8Qks5awnQmwA%3D%3D getdata.py
-sudo wget https://raw.githubusercontent.com/sysgain/IOTLabs/EMSDemoLabs-Dev/scripts/input.bash?token=AT7l1WsxVGJeVh_TaAeG58aOqXnHFXpiks5awnRZwA%3D%3D >>/tmp/iot-demo-labs
-mv input.bash?token=AT7l1WsxVGJeVh_TaAeG58aOqXnHFXpiks5awnRZwA%3D%3D input.bash
+sudo wget https://raw.githubusercontent.com/M-priyanka/azuure-nested-temp/master/input.bash
+#sudo wget https://raw.githubusercontent.com/sysgain/IOTLabs/EMSDemoLabs-Dev/scripts/input.bash?token=AT7l1WsxVGJeVh_TaAeG58aOqXnHFXpiks5awnRZwA%3D%3D >>/tmp/iot-demo-labs
+#mv input.bash?token=AT7l1WsxVGJeVh_TaAeG58aOqXnHFXpiks5awnRZwA%3D%3D input.bash
 sudo sh input.bash >>/tmp/iot-demo-labs
 sleep 20
 

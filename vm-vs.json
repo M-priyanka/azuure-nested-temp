@@ -9,7 +9,7 @@
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('visualStudioVm').networkInterfaceName]",
+            "name": "[parameters('visualStudioVm').networkInterfaceNameDr]",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2018-10-01",
             "location": "[parameters('visualStudioVm').locationDr]",

@@ -142,7 +142,7 @@
                     ]
                 },
                 "osProfile": {
-                    "computerName": "[parameters('visualStudioVm').vmName]",
+                    "computerName": "[parameters('visualStudioVm').virtualMachineNameDr]",
                     "adminUsername": "[parameters('visualStudioVm').vmUsername]",
                     "adminPassword": "[parameters('visualStudioVm').vmPassword]",
                     "windowsConfiguration": {
